@@ -8,7 +8,6 @@ class sphere : public object {
     public:
         sphere() {}
         sphere(vec3 cen, double r) : center(cen), radius(r) {};
-        sphere(vec3 cen, double r, color c) : center(cen), radius(r) {};
 
         virtual double distance(vec3 pos) const override;
 

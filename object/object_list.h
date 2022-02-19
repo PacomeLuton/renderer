@@ -11,6 +11,7 @@
 #include "deathstar.h"
 #include "torus.h"
 #include "infinite_cylinder.h"
+#include "stick.h"
 
 using std::shared_ptr;
 using std::make_shared;
@@ -33,6 +34,7 @@ double scene::distance(vec3 pos) const {
     double d = infinity;
     for(const auto& o : objects) {
         d = smin(d, o->distance(pos),0.05);
+        //d = min(d, o->distance(pos));
     }
     return d;
 }
