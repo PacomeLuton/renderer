@@ -5,7 +5,7 @@
 #include <limits>
 // Constants
 
-const double infinity = std::numeric_limits<double>::infinity();
+const double infinity = 1e9;
 const double pi = 3.1415926535897932385;
 
 // Utility Functions

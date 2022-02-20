@@ -4,7 +4,7 @@
 #include <vector>
 
 //lib include
-#include "./my_lib/my_lib.hpp"
+#include "./my_lib/my_lib.h"
 #include "./extern_lib/image.h"
 #include "color.h"
 #include "colorpixel.h"
@@ -12,7 +12,7 @@
 using namespace std; //je suis un flemard, dsl
 
 #define TAILLE_ECRAN 1000
-#define SAMPLE_PER_PIXEL 4
+#define SAMPLE_PER_PIXEL 1
 
 int main(){
     // creation de l'image image

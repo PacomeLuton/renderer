@@ -1,7 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include "./../../my_lib/my_lib.hpp"
+#include "./../../my_lib/my_lib.h"
 
 class object {
     public:

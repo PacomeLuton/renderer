@@ -1,5 +1,5 @@
-#include "my_lib/my_lib.hpp"
-#include "object/all_objects.hpp"
+#include "my_lib/my_lib.h"
+#include "object/all_objects.h"
 
 double map(vec3 pos, scene &world){
     double d = world.distance(pos);

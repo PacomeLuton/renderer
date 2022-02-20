@@ -4,8 +4,8 @@
 #include <iostream>
 #include <vector>
 
-#include "utils.hpp"
-#include "vec2.hpp"
-#include "vec3.hpp"
+#include "utils.cpp"
+#include "vec2.cpp"
+#include "vec3.cpp"
 
 #endif
