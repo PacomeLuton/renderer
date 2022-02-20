@@ -6,8 +6,8 @@
 //lib include
 #include "./my_lib/my_lib.h"
 #include "./extern_lib/image.h"
-#include "color.h"
-#include "colorpixel.h"
+#include "color.cpp"
+#include "colorpixel.cpp"
 
 using namespace std; //je suis un flemard, dsl
 

@@ -1,5 +1,5 @@
 #include "my_lib/my_lib.h"
-#include "ray.h"
+#include "ray.cpp"
 #include "object/all_objects.h"
 
 color color_pixel(vec2 pixel_pos, vec2 resolution){
