@@ -1,3 +1,6 @@
+#ifndef RAY_H
+#define RAY_H
+
 #include "my_lib/my_lib.h"
 #include "object/all_objects.h"
 
@@ -34,3 +37,5 @@ double ray_casting(vec3 ro, vec3 rd, scene &world){
     }
     return res;
 }
+
+#endif

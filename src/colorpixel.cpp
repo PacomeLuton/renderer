@@ -1,6 +1,9 @@
+#ifndef COLOR_PIXEL_H
+#define COLOR_PIXEL_H
+
 #include "my_lib/my_lib.h"
-#include "ray.cpp"
 #include "object/all_objects.h"
+#include "ray.cpp"
 
 color color_pixel(vec2 pixel_pos, vec2 resolution){
     vec2 p = (2*pixel_pos - resolution)/resolution.y();
@@ -35,3 +38,6 @@ color color_pixel(vec2 pixel_pos, vec2 resolution){
 
     return c;
 }
+
+
+#endif
