@@ -1,10 +1,7 @@
 #ifndef COLOR_H
 #define COLOR_H
 
-#include <iostream>
-#include <vector>
-#include "my_lib/my_lib.h"
-
+#include "my_lib/my_lib.hpp"
 
 void write_color(color pixel_color, int pos, std::vector<unsigned char> &output) {
     auto r = pixel_color.x();

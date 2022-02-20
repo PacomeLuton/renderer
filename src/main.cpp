@@ -4,7 +4,7 @@
 #include <vector>
 
 //lib include
-#include "./my_lib/my_lib.h"
+#include "./my_lib/my_lib.hpp"
 #include "./extern_lib/image.h"
 #include "color.h"
 #include "colorpixel.h"
