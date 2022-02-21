@@ -1,5 +1,5 @@
-#ifndef RAY_C
-#define RAY_C
+#ifndef RAY_H
+#define RAY_H
 
 #include "my_lib/my_lib.h"
 #include "object/all_objects.h"
@@ -31,12 +31,11 @@ hit_record ray_casting(vec3 ro, vec3 rd, scene &world){
         hit_record h = map(pos, world);
         if (h.d < 0.001){
             res = h;
-            res.t = t;
             break;
         }
         t+=h.d;
     }
-    //if (t < tmax) res.t = t;
+    res.t = t;
     return res;
 }
 

@@ -2,6 +2,7 @@
 #define ALL_OBJECT_H
 
 #include "scene.cpp"
+#include "object_list/object.cpp"
 
 //https://iquilezles.org/www/articles/distfunctions/distfunctions.htm
 #include "./object_list/deathstar.cpp"

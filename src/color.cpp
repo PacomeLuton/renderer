@@ -9,7 +9,7 @@ void write_color(color pixel_color, int pos, std::vector<unsigned char> &output)
     auto b = pixel_color.z();
 
     // gamma correction
-    double gamma = 1;
+    double gamma = 0.7;
     r = int(clamp(pow(r,gamma)*256,0,255.99));
     g = int(clamp(pow(g,gamma)*256,0,255.99));
     b = int(clamp(pow(b,gamma)*256,0,255.99));

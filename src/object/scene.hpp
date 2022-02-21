@@ -17,6 +17,7 @@ class scene : public object {
         void add(shared_ptr<object> o);
 
         virtual double distance(vec3 pos) const override;
+        hit_record hit(vec3 pos);
 
     public:
         std::vector<shared_ptr<object> > objects;

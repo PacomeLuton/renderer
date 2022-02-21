@@ -1,3 +1,6 @@
+#ifndef VEC3_C
+#define VEC3_C
+
 #include "vec3.hpp"
 
 vec3::vec3() : e{0,0,0} {}
@@ -90,3 +93,5 @@ inline vec3 unit_vector(vec3 v) {
 inline double length(vec3 v){
     return v.norm();
 }
+
+#endif

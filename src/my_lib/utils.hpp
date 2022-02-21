@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <limits>
+
 // Constants
 
 const double infinity = 1e9;

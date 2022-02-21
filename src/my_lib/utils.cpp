@@ -1,3 +1,6 @@
+#ifndef UTILS_C
+#define UTILS_C
+
 #include "utils.hpp"
 
 inline double min (double a, double b) { 
@@ -27,3 +30,5 @@ inline double random_double() {
     // Returns a random real in [0,1).
     return rand() / (RAND_MAX + 1.0);
 }
+
+#endif

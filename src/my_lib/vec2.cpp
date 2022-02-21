@@ -1,5 +1,7 @@
-#include "vec2.hpp"
+#ifndef VEC2_C
+#define VEC2_C
 
+#include "vec2.hpp"
 
 vec2::vec2() : e{0,0} {};
 vec2::vec2(double x) : e{x,x} {};
@@ -80,3 +82,5 @@ inline vec2 unit_vector(vec2 v) {
 inline double length(vec2 v){
     return v.norm();
 }
+
+#endif
