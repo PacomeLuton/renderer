@@ -7,8 +7,8 @@
 #include "creation_scene.cpp"
 
 
-color color_from_ray(vec3 ro, vec3 rd, scene world, int depth){
-    if (depth < 0) return color(0); //le rayon a plus d'énergie
+color color_from_ray(vec3 ro, vec3 rd, scene world, double power ,int depth){
+    if (depth < 0 || power < 0.1) return color(0); //le rayon a plus d'énergie
 
     color c = color(0);
 
@@ -26,9 +26,14 @@ color color_from_ray(vec3 ro, vec3 rd, scene world, int depth){
         if (h.t < 0 && dot(sun_dir,t.n) > 0) c += t.m->p*clamp(dot(t.n,sun_dir),0,1)*t.m->couleur(t); // si on a touché le soleil
 
         if (t.m->reflexion){ //si on peut recupérer des rayons reflechi.
-            vec3 new_direc = t.m->rayon(t);
-            c += (1-t.m->p)*t.m->couleur(t) * color_from_ray(t.p,new_direc, world, depth-1);
-
+            color c_temp = color(0);
+            int N = 10*power;
+            if (t.m->p < 1e-4) N = 1;
+            for(int i = 0; i < N; i++){
+                vec3 new_direc = t.m->rayon(t);
+                c_temp += (1-t.m->p)*t.m->couleur(t) * color_from_ray(t.p,new_direc, world, power*(1-t.m->p), depth-1);
+            }
+            c += c_temp/N;
         }
     } 
     else
@@ -51,7 +56,7 @@ color color_pixel(vec2 pixel_pos, vec2 resolution){
     vec3 ro = vec3(0,0.3,1);
     vec3 rd = unit_vector(vec3(p,-1.5));
 
-    c = color_from_ray(ro,rd,world,4);
+    c = color_from_ray(ro,rd,world,1,10);
 
     return c;
 }

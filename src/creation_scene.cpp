@@ -11,7 +11,7 @@ scene creation_scene(){
 
     infinite_cylinder bar(vec3(0),0.1,vec3(-0.6,1,1.3));
     bar.set_material(make_shared<lambertian>());
-    world.add(make_shared<infinite_cylinder>(bar));
+    //world.add(make_shared<infinite_cylinder>(bar));
     
     sphere boule(vec3(0.8,0.5,-0.3),0.18);
     boule.set_material(make_shared<miror>());
