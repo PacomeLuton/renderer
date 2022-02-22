@@ -1,3 +1,6 @@
+#ifndef INFINITE_CYLINDER_C
+#define INFINITE_CYLINDER_C
+
 #include "infinite_cylinder.hpp"
 
 infinite_cylinder::infinite_cylinder() {};
@@ -10,3 +13,5 @@ double infinite_cylinder::distance(vec3 pos) const {
     double a = dot(p,axe);
     return length(p-a*axe)-radius;
 }
+
+#endif

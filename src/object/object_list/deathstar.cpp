@@ -1,3 +1,6 @@
+#ifndef DEATHSTAR_C
+#define DEATHSTAR_C
+
 #include "deathstar.hpp"
 
 deathstar::deathstar() {}
@@ -27,3 +30,5 @@ double deathstar::distance(vec3 pos) const {
                    -(length(p-vec2(d,0))-rb));
     }
 }
+
+#endif

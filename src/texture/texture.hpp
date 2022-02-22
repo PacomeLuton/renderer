@@ -3,11 +3,14 @@
 
 #include "./../my_lib/my_lib.h"
 
-struct hit_record;
-
 class material {
     public:
-        virtual bool scatter() const = 0;
+        virtual color couleur(hit_record h) const = 0; // couleur de cette partie de l'objet
+        virtual vec3 rayon(hit_record h) const = 0; // d'ou vient la lumiere
 };
+
+color material::couleur(hit_record h) const {
+    return color(0);
+}
 
 #endif

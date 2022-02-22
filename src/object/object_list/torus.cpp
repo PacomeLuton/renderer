@@ -1,3 +1,6 @@
+#ifndef TORUS_C
+#define TORUS_C
+
 #include "torus.hpp"
 
 torus::torus() {}
@@ -10,3 +13,4 @@ double torus::distance(vec3 pos) const {
     return length(q)-epaisseur;
 }
 
+#endif
