@@ -18,5 +18,6 @@ inline double clamp(double x, double min, double max);
 double smin( double a, double b, double k );
 
 inline double random_double();
+inline double random_double(double min, double max);
 
 #endif

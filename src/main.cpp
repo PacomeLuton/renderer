@@ -12,9 +12,12 @@
 using namespace std; //je suis un flemard, dsl
 
 #define TAILLE_ECRAN 1000
-#define SAMPLE_PER_PIXEL 1
+#define SAMPLE_PER_PIXEL 10
 
 int main(){
+    //on veut un peu de random
+    srand(time(NULL));
+
     // creation de l'image image
     double ratio = 9./16;
     int largeur = TAILLE_ECRAN;

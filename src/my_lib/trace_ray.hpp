@@ -9,6 +9,7 @@ class material;
 struct hit_record {
     vec3 p; // position ou ça a touché
     vec3 n; // normal de la surface (calculer si besoin)
+    vec3 i; // direction du rayon incident
     double d; // distance à la surface
     double t; // distance au depart du rayon
     bool front_face; // interieur ou exterieur de la surface

@@ -5,6 +5,9 @@
 
 class material {
     public:
+        bool reflexion = false; // si le material produit un rayon incident 
+        double p = 1; //pourcentage venant de la lumiere direct
+    public:
         virtual color couleur(hit_record h) const = 0; // couleur de cette partie de l'objet
         virtual vec3 rayon(hit_record h) const = 0; // d'ou vient la lumiere
 };

@@ -1,14 +1,13 @@
-#ifndef TEXTURE_LAMBERTIAN_H
-#define TEXTURE_LAMBERTIAN_H
+#ifndef TEXTURE_MIROR_H
+#define TEXTURE_MIROR_H
 
 #include "../texture.hpp"
 
-class lambertian : public material {
+class miror : public material {
     public:
         color c;
     public:
-        lambertian();
-        lambertian(color col);
+        miror();
         virtual color couleur(hit_record h) const override;
         virtual vec3 rayon(hit_record h) const override;
 };
