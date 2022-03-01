@@ -5,7 +5,8 @@
 
 class material {
     public:
-        bool reflexion = false; // si le material produit un rayon incident 
+        bool reflexion = false; // si le material produit un rayon incident
+        bool lumiere = false; // si le material produit de la lumière 
         double p = 1; //pourcentage venant de la lumiere direct
     public:
         virtual color couleur(hit_record h) const = 0; // couleur de cette partie de l'objet
@@ -14,6 +15,10 @@ class material {
 
 color material::couleur(hit_record h) const {
     return color(0);
+}
+
+vec3 material::rayon(hit_record h) const {
+    return vec3(0);
 }
 
 #endif

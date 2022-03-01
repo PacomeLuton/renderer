@@ -8,6 +8,7 @@ class miror : public material {
         color c;
     public:
         miror();
+        miror(color c);
         virtual color couleur(hit_record h) const override;
         virtual vec3 rayon(hit_record h) const override;
 };

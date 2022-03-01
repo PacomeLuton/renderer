@@ -4,6 +4,7 @@
 #include "miror.hpp"
 
 miror::miror() : c(color(1)) {reflexion = true; p = 0;};
+miror::miror(color col) : c(col) {reflexion = true; p = 0;};
 
 color miror::couleur(hit_record h) const {
     return this->c;

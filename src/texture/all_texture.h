@@ -11,5 +11,6 @@ using std::make_shared;
 #include "./texture_list/lambertian.cpp"
 #include "./texture_list/uniform.cpp"
 #include "./texture_list/miror.cpp"
+#include "./texture_list/soleil.cpp"
 
 #endif

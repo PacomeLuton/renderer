@@ -16,6 +16,12 @@ color color_from_ray(vec3 ro, vec3 rd, scene world, double power ,int depth){
 
     if (t.t > 0)
     { // on a touché un objet
+
+        if (t.m->lumiere){
+            c = t.m->couleur(t);
+            return c;
+        }
+
         t.n = unit_vector(calcNormal(ro+rd*t.t,world)); //on calcul la normal de la surface, car c'est paratique
         t.p = ro+rd*t.t; //position du point d'impact
         t.i = rd; // direction du rayon incident
@@ -23,7 +29,7 @@ color color_from_ray(vec3 ro, vec3 rd, scene world, double power ,int depth){
         vec3 sun_dir = unit_vector(vec3(0.6, 0.35, 0.5)); //direction du soleil
         auto h = ray_casting(t.p,sun_dir,world); // illumination directe
         
-        if (h.t < 0 && dot(sun_dir,t.n) > 0) c += t.m->p*clamp(dot(t.n,sun_dir),0,1)*t.m->couleur(t); // si on a touché le soleil
+        //if (h.t < 0 && dot(sun_dir,t.n) > 0) c += 0.4*t.m->p*clamp(dot(t.n,sun_dir),0,1)*t.m->couleur(t); // si on a touché le soleil
 
         if (t.m->reflexion){ //si on peut recupérer des rayons reflechi.
             color c_temp = color(0);
@@ -40,7 +46,7 @@ color color_from_ray(vec3 ro, vec3 rd, scene world, double power ,int depth){
     { // on est arrivé à l'infini
         double coeff = clamp(dot(rd, vec3(0,1,0)),0,1); // direction du ciel
         color background_color = coeff*color(0.5, 0.7, 1.0) + (1-coeff)*color(0.8, 0.9, 1.0);
-        c = background_color;
+        //if (depth == 10) c = background_color;
     }
 
     return c;
