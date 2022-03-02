@@ -33,7 +33,7 @@ color color_from_ray(vec3 ro, vec3 rd, scene world, double power ,int depth){
 
         if (t.m->reflexion){ //si on peut recupérer des rayons reflechi.
             color c_temp = color(0);
-            int N = 10*power;
+            int N = 1;
             if (t.m->p < 1e-4) N = 1;
             for(int i = 0; i < N; i++){
                 vec3 new_direc = t.m->rayon(t);
@@ -62,7 +62,7 @@ color color_pixel(vec2 pixel_pos, vec2 resolution){
     vec3 ro = vec3(0,0.3,1);
     vec3 rd = unit_vector(vec3(p,-1.5));
 
-    c = color_from_ray(ro,rd,world,1,10);
+    c = color_from_ray(ro,rd,world,1,3);
 
     return c;
 }

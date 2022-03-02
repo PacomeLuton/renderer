@@ -11,8 +11,8 @@
 
 using namespace std; //je suis un flemard, dsl
 
-#define TAILLE_ECRAN 1000
-#define SAMPLE_PER_PIXEL 10
+#define TAILLE_ECRAN 500
+#define SAMPLE_PER_PIXEL 40
 
 int main(){
     //on veut un peu de random
