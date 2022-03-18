@@ -22,7 +22,7 @@ vec3 calcNormal(vec3 p, scene &world){
 hit_record ray_casting(vec3 ro, vec3 rd, scene &world){
     hit_record res;
 
-    double tmax = 20.;
+    double tmax = 100.;
     double tmin = 0.01;
 
     double t = tmin;

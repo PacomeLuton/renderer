@@ -90,6 +90,18 @@ inline vec3 power(vec3 v, double t){
     return vec3(pow(v.e[0],t), pow(v.e[1],t), pow(v.e[2],t));
 }
 
+inline vec3 max(vec3 a, vec3 b){
+    return vec3(max(a.e[0],b.e[0]), max(a.e[1],b.e[1]), max(a.e[2],b.e[2]));   
+};
+
+inline vec3 min(vec3 a, vec3 b){
+    return vec3(min(a.e[0],b.e[0]), min(a.e[1],b.e[1]), min(a.e[2],b.e[2]));   
+};
+
+inline vec3 abs(vec3 v){
+    return vec3(abs(v.e[0]), abs(v.e[1]), abs(v.e[2]));
+};
+
 inline double dot(const vec3 &u, const vec3 &v) {
     return u.e[0] * v.e[0]
          + u.e[1] * v.e[1]

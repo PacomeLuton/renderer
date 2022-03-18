@@ -3,7 +3,7 @@
 #include "../texture.hpp"
 
 class soleil : public material {
-    public:
+    private:
         color couleur_emis;
         color couleur_ref;
     public:

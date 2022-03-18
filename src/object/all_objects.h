@@ -9,6 +9,8 @@
 #include "./object_list/stick.cpp"
 #include "./object_list/torus.cpp"
 #include "./object_list/sphere.cpp"
+#include "./object_list/square.cpp"
 #include "./object_list/infinite_cylinder.cpp"
+#include "./object_list/plane.cpp"
 
 #endif

@@ -4,6 +4,7 @@
 #include <cmath>
 #include <iostream>
 #include "vec2.hpp"
+#include "utils.hpp"
 
 using std::sqrt;
 
@@ -50,7 +51,11 @@ inline vec3 operator*(const vec3 &u, const vec3 &v);
 inline vec3 operator*(double t, const vec3 &v);
 inline vec3 operator*(const vec3 &v, double t);
 inline vec3 operator/(vec3 v, double t);
+
 inline vec3 power(vec3 v, double t);
+inline vec3 max(vec3 a, vec3 b);
+inline vec3 min(vec3 a, vec3 b);
+inline vec3 abs(vec3 a);
 
 inline double dot(const vec3 &u, const vec3 &v);
 inline vec3 cross(const vec3 &u, const vec3 &v);

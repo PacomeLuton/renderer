@@ -42,11 +42,11 @@ color color_pixel(vec2 pixel_pos, vec2 resolution, scene world, int sampling){
     
     color c;
 
-    vec3 ro = vec3(0,0.3,1); //position de la camera
+    vec3 ro = vec3(0,0.5,1); //position de la camera
     vec3 rd = unit_vector(vec3(p,-1.5)); //direction dans laquelle on regarde 
 
     for (int s = 0; s < sampling; s++) {
-        c += color_from_ray(ro,rd,world,0,3);
+        c += color_from_ray(ro,rd,world,0,5);
     }
 
     c /= sampling; 

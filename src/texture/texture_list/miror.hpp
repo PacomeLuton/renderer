@@ -4,7 +4,7 @@
 #include "../texture.hpp"
 
 class miror : public material {
-    public:
+    private:
         color couleur;
     public:
         miror();
