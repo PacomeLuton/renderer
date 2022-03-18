@@ -1,6 +1,3 @@
-#ifndef SPHERE_C
-#define SPHERE_C
-
 #include "sphere.hpp"
 
 sphere::sphere() {};
@@ -11,5 +8,3 @@ double sphere::distance(vec3 pos) const {
     double d = v.norm();
     return d-radius;
 }
-
-#endif

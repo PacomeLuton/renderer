@@ -1,6 +1,3 @@
-#ifndef VEC2_C
-#define VEC2_C
-
 #include "vec2.hpp"
 
 vec2::vec2() : e{0,0} {};
@@ -38,49 +35,47 @@ double vec2::length_squared() const{
     return e[0]*e[0] + e[1]*e[1];
 }
 
-inline std::ostream& operator<<(std::ostream &out, const vec2 &v) {
+std::ostream& operator<<(std::ostream &out, const vec2 &v) {
     return out << v.e[0] << ' ' << v.e[1];
 }
 
-inline vec2 operator+(const vec2 &u, const vec2 &v) {
+vec2 operator+(const vec2 &u, const vec2 &v) {
     return vec2(u.e[0] + v.e[0], u.e[1] + v.e[1]);
 }
 
-inline vec2 operator-(const vec2 &u, const vec2 &v) {
+vec2 operator-(const vec2 &u, const vec2 &v) {
     return vec2(u.e[0] - v.e[0], u.e[1] - v.e[1]);
 }
 
-inline vec2 operator*(const vec2 &u, const vec2 &v) {
+vec2 operator*(const vec2 &u, const vec2 &v) {
     return vec2(u.e[0] * v.e[0], u.e[1] * v.e[1]);
 }
 
-inline vec2 operator/(const vec2 &u, const vec2 &v) {
+vec2 operator/(const vec2 &u, const vec2 &v) {
     return vec2(u.e[0] / v.e[0], u.e[1] / v.e[1]);
 }
 
-inline vec2 operator*(double t, const vec2 &v) {
+vec2 operator*(double t, const vec2 &v) {
     return vec2(t*v.e[0], t*v.e[1]);
 }
 
-inline vec2 operator*(const vec2 &v, double t) {
+vec2 operator*(const vec2 &v, double t) {
     return t * v;
 }
 
-inline vec2 operator/(vec2 v, double t) {
+vec2 operator/(vec2 v, double t) {
     return (1/t) * v;
 }
 
-inline double dot(const vec2 &u, const vec2 &v) {
+double dot(const vec2 &u, const vec2 &v) {
     return u.e[0] * v.e[0]
          + u.e[1] * v.e[1];
 }
 
-inline vec2 unit_vector(vec2 v) {
+vec2 unit_vector(vec2 v) {
     return v / v.norm();
 }
 
-inline double length(vec2 v){
+double length(vec2 v){
     return v.norm();
 }
-
-#endif

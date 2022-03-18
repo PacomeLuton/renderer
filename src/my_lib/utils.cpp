@@ -1,6 +1,3 @@
-#ifndef UTILS_C
-#define UTILS_C
-
 #include "utils.hpp"
 
 double min (double a, double b) { 
@@ -36,6 +33,3 @@ double random_double(double min, double max) {
     double r = random_double();
     return (min + r*(max-min));
 }
-
-
-#endif

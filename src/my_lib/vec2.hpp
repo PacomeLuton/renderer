@@ -30,19 +30,19 @@ class vec2 {
 };
 
 
-inline std::ostream& operator<<(std::ostream &out, const vec2 &v);
+std::ostream& operator<<(std::ostream &out, const vec2 &v);
 
-inline vec2 operator+(const vec2 &u, const vec2 &v);
-inline vec2 operator-(const vec2 &u, const vec2 &v);
-inline vec2 operator*(const vec2 &u, const vec2 &v);
-inline vec2 operator/(const vec2 &u, const vec2 &v);
+vec2 operator+(const vec2 &u, const vec2 &v);
+vec2 operator-(const vec2 &u, const vec2 &v);
+vec2 operator*(const vec2 &u, const vec2 &v);
+vec2 operator/(const vec2 &u, const vec2 &v);
 
-inline vec2 operator*(double t, const vec2 &v);
-inline vec2 operator*(const vec2 &v, double t);
-inline vec2 operator/(vec2 v, double t);
+vec2 operator*(double t, const vec2 &v);
+vec2 operator*(const vec2 &v, double t);
+vec2 operator/(vec2 v, double t);
 
-inline double dot(const vec2 &u, const vec2 &v);
-inline vec2 unit_vector(vec2 v);
-inline double length(vec2 v);
+double dot(const vec2 &u, const vec2 &v);
+vec2 unit_vector(vec2 v);
+double length(vec2 v);
 
 #endif

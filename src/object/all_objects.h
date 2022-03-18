@@ -1,7 +1,7 @@
 #ifndef ALL_OBJECT_H
 #define ALL_OBJECT_H
 
-#include "scene.hpp"
+#include "./scene.hpp"
 #include "object_list/object.hpp"
 
 //https://iquilezles.org/www/articles/distfunctions/distfunctions.htm

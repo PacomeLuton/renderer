@@ -1,5 +1,3 @@
-#pragma once
-
 #include "../texture.hpp"
 
 class soleil : public material {

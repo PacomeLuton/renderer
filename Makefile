@@ -4,11 +4,14 @@ LINKFLAGS=-lomp
 
 EXEC=main
 
-CFILES= $(wildcard src/**/*.cpp)
+CFILES= $(shell find src -name "*.cpp")
 OFILES= $(patsubst src/%.cpp,obj/%.o,$(CFILES))
 INCLUDE= $(patsubst src/%.cpp,dep/%.d,$(CFILES))
 
 all : bin/$(EXEC)
+
+run : all
+	./bin/main -n 8 -t 1000
 
 bin/$(EXEC) : $(OFILES)
 	$(CXX) -v -o $@ $^ $(LINKFLAGS)

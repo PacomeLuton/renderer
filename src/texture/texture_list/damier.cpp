@@ -1,5 +1,3 @@
-#pragma once
-
 #include "damier.hpp"
 
 damier::damier() : couleur1(color(1)), couleur2(color(0.01)) {};

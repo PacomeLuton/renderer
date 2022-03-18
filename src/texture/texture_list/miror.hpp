@@ -1,6 +1,3 @@
-#ifndef TEXTURE_MIROR_H
-#define TEXTURE_MIROR_H
-
 #include "../texture.hpp"
 
 class miror : public material {
@@ -13,5 +10,3 @@ class miror : public material {
         virtual color emittance(hit_record in) const override;
         virtual vec3 rayon(hit_record in) const override;
 };
-
-#endif

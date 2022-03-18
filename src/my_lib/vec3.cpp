@@ -1,6 +1,3 @@
-#ifndef VEC3_C
-#define VEC3_C
-
 #include "vec3.hpp"
 
 vec3::vec3() : e{0,0,0} {}
@@ -45,84 +42,84 @@ double vec3::length_squared() const {
     return e[0]*e[0] + e[1]*e[1] + e[2]*e[2];
 }
 
-inline vec3 vec3::random() {
+vec3 vec3::random() {
     return vec3(random_double(), random_double(), random_double());
 }
 
-inline vec3 vec3::random(double min, double max) {
+vec3 vec3::random(double min, double max) {
     return vec3(random_double(min,max), random_double(min,max), random_double(min,max));
 }
 
-inline vec3 vec3::random_unit(){
+vec3 vec3::random_unit(){
     return unit_vector(vec3::random(-1,1));
 }
 
 
-inline std::ostream& operator<<(std::ostream &out, const vec3 &v) {
+std::ostream& operator<<(std::ostream &out, const vec3 &v) {
     return out << v.e[0] << ' ' << v.e[1] << ' ' << v.e[2];
 }
 
-inline vec3 operator+(const vec3 &u, const vec3 &v) {
+vec3 operator+(const vec3 &u, const vec3 &v) {
     return vec3(u.e[0] + v.e[0], u.e[1] + v.e[1], u.e[2] + v.e[2]);
 }
 
-inline vec3 operator-(const vec3 &u, const vec3 &v) {
+vec3 operator-(const vec3 &u, const vec3 &v) {
     return vec3(u.e[0] - v.e[0], u.e[1] - v.e[1], u.e[2] - v.e[2]);
 }
 
-inline vec3 operator*(const vec3 &u, const vec3 &v) {
+vec3 operator*(const vec3 &u, const vec3 &v) {
     return vec3(u.e[0] * v.e[0], u.e[1] * v.e[1], u.e[2] * v.e[2]);
 }
 
-inline vec3 operator*(double t, const vec3 &v) {
+vec3 operator*(double t, const vec3 &v) {
     return vec3(t*v.e[0], t*v.e[1], t*v.e[2]);
 }
 
-inline vec3 operator*(const vec3 &v, double t) {
+vec3 operator*(const vec3 &v, double t) {
     return t * v;
 }
 
-inline vec3 operator/(vec3 v, double t) {
+vec3 operator/(vec3 v, double t) {
     return (1/t) * v;
 }
 
-inline vec3 power(vec3 v, double t){
+vec3 power(vec3 v, double t){
     return vec3(pow(v.e[0],t), pow(v.e[1],t), pow(v.e[2],t));
 }
 
-inline vec3 max(vec3 a, vec3 b){
+vec3 max(vec3 a, vec3 b){
     return vec3(max(a.e[0],b.e[0]), max(a.e[1],b.e[1]), max(a.e[2],b.e[2]));   
 };
 
-inline vec3 min(vec3 a, vec3 b){
+vec3 min(vec3 a, vec3 b){
     return vec3(min(a.e[0],b.e[0]), min(a.e[1],b.e[1]), min(a.e[2],b.e[2]));   
 };
 
-inline vec3 abs(vec3 v){
-    return vec3(abs(v.e[0]), abs(v.e[1]), abs(v.e[2]));
+vec3 abs(vec3 v){
+    return vec3(std::abs(v.e[0]), std::abs(v.e[1]), std::abs(v.e[2]));
 };
 
-inline double dot(const vec3 &u, const vec3 &v) {
+double dot(const vec3 &u, const vec3 &v) {
     return u.e[0] * v.e[0]
          + u.e[1] * v.e[1]
          + u.e[2] * v.e[2];
 }
 
-inline vec3 cross(const vec3 &u, const vec3 &v) {
+vec3 cross(const vec3 &u, const vec3 &v) {
     return vec3(u.e[1] * v.e[2] - u.e[2] * v.e[1],
                 u.e[2] * v.e[0] - u.e[0] * v.e[2],
                 u.e[0] * v.e[1] - u.e[1] * v.e[0]);
 }
 
-inline vec3 unit_vector(vec3 v) {
+vec3 unit_vector(vec3 v) {
     return v / v.norm();
 }
 
-inline double length(vec3 v){
+double length(vec3 v){
     return v.norm();
 }
 
-inline bool close_null(vec3 v){
+bool close_null(vec3 v){
     return (length(v) < 1e-7);
 }
 
@@ -133,5 +130,3 @@ vec3 random_in_unit_sphere() {
         return p;
     }
 }
-
-#endif

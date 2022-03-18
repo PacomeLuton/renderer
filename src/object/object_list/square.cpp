@@ -1,5 +1,3 @@
-#pragma once
-
 #include "square.hpp"
 
 square::square() {};

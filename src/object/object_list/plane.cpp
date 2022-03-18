@@ -1,5 +1,3 @@
-#pragma once
-
 #include "plane.hpp"
 
 plane::plane() : normal(vec3(0,1,0)), center(0) {};

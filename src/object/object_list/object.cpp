@@ -1,6 +1,3 @@
-#ifndef OBJECT_C
-#define OBJECT_C
-
 #include "object.hpp"
 #include <memory.h>
 
@@ -17,5 +14,3 @@ hit_record object::hit(vec3 pos){
     res.front_face = (res.distance >= 0);
     return res;
 }
-
-#endif

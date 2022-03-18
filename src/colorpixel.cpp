@@ -1,8 +1,4 @@
-
-#include "my_lib/my_lib.h"
-#include "object/all_objects.h"
-#include "ray.cpp"
-
+#include "colorpixel.hpp"
 
 color color_from_ray(vec3 ro, vec3 rd, scene &world, int depth, int max_depth){
     if (depth > max_depth) return color(0); //le rayon a plus d'énergie

@@ -1,6 +1,3 @@
-#ifndef STICK_C
-#define STICK_C
-
 #include "stick.hpp"
 
 stick::stick() {}
@@ -12,5 +9,3 @@ double stick::distance(vec3 pos) const {
     double a = clamp(dot(p,axe),0,taille);
     return length(p-a*axe)-radius;
 }
-
-#endif

@@ -1,8 +1,5 @@
-#include "my_lib/my_lib.h"
-#include "object/all_objects.h"
+#include "creation_scene.hpp"
 
-using std::shared_ptr;
-using std::make_shared;
 
 static void donut_scene(scene &world){
     torus tor(vec3(0),0.4,0.1,vec3(-0.6,1,1.3));

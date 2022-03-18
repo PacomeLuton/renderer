@@ -12,9 +12,9 @@
 //lib include
 #include "./my_lib/my_lib.h"
 #include "./extern_lib/image.h"
-#include "color.cpp"
-#include "colorpixel.cpp"
-#include "creation_scene.cpp"
+#include "color.hpp"
+#include "colorpixel.hpp"
+#include "creation_scene.hpp"
 
 using namespace std; //je suis un flemard, dsl
 

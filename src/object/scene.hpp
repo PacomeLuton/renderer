@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <memory>
-#include "object_list/object.hpp"
+#include "./object_list/object.hpp"
 
 using std::shared_ptr;
 using std::make_shared;
