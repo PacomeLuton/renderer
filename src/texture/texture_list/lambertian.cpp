@@ -7,7 +7,7 @@ lambertian::lambertian() : couleur(color(0.5)) {};
 lambertian::lambertian(color col) : couleur(col) {};
 
 vec3 lambertian::rayon(hit_record h) const {
-    vec3 ray = unit_vector(h.normal + vec3::random_unit());
+    vec3 ray = unit_vector(h.normal + random_in_unit_sphere());
     return ray;
 };
 
