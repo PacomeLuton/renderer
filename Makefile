@@ -1,17 +1,33 @@
 CXX=clang++ -std=c++17
 FLAGS=-O3 -Xpreprocessor -fopenmp 
 LINKFLAGS=-lomp 
-SRC=src/main.cpp
+
 EXEC=main
 
-all:
-	time $(CXX) $(FLAGS) $(SRC) $(LINKFLAGS) -o $(EXEC)
+CFILES= $(wildcard src/**/*.cpp)
+OFILES= $(patsubst src/%.cpp,obj/%.o,$(CFILES))
+INCLUDE= $(patsubst src/%.cpp,dep/%.d,$(CFILES))
 
-run: all
-	time ./main
+all : bin/$(EXEC)
+
+bin/$(EXEC) : $(OFILES)
+	$(CXX) -v -o $@ $^ $(LINKFLAGS)
+
+obj/%.o: src/%.cpp
+	mkdir -p $(dir $@)
+	$(CXX) $(FLAGS) -o $@ -c $<
+
+dep/%.d: src/%.cpp
+	mkdir -p $(dir $@)
+	$(CXX) $(FLAGS) -c $< -M -MF dep/$*.d -MT $@
 
 clean:
-	rm $(EXEC) -n 8
+	$(RM) $(OFILES) $(INCLUDE)
 
-# SPECIAL BUILT-IN RULES
-.PHONY: all clean
+mrproper: clean
+	$(RM) bin/$(EXEC)
+
+dir:
+	@mkdir -p obj; mkdir -p bin; mkdir -p dep
+
+-include $(INCLUDE)
