@@ -18,14 +18,14 @@
 
 using namespace std; //je suis un flemard, dsl
 
-#define TAILLE_ECRAN 500
-
 int main(int argc, char **argv){
 
     //on defini les options
     CLI::App app{"Randering"};
     unsigned int SAMPLE_PER_PIXEL = 1;
     app.add_option("-n,--nbspp", SAMPLE_PER_PIXEL, "Number of samples");
+    unsigned int TAILLE_ECRAN  = 500;
+    app.add_option("-t,--taille", TAILLE_ECRAN, "Size of the screen");
     CLI11_PARSE(app, argc, argv);
 
     //on veut un peu de random

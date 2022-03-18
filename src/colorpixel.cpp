@@ -15,7 +15,7 @@ color color_from_ray(vec3 ro, vec3 rd, scene &world, int depth, int max_depth){
 
         t.pos = ro+rd*t.time; //position du point d'impact
         t.normal = unit_vector(calcNormal(t.pos,world)); //on calcul la normal de la surface, car c'est paratique
-        t.wi = rd; // direction du rayon incident
+        t.wi = -rd; // direction du rayon incident
         
         //vec3 sun_dir = unit_vector(vec3(0.6, 0.35, 0.5)); //direction du soleil
         //auto h = ray_casting(t.pos,sun_dir,world); // illumination directe
@@ -42,8 +42,10 @@ color color_pixel(vec2 pixel_pos, vec2 resolution, scene world, int sampling){
     
     color c;
 
-    vec3 ro = vec3(0,0.5,1); //position de la camera
+    vec3 ro = vec3(0,1,1); //position de la camera
     vec3 rd = unit_vector(vec3(p,-1.5)); //direction dans laquelle on regarde 
+    rd = mat3::rotationX(-0.44)*rd; // on baisse un peu la camera
+
 
     for (int s = 0; s < sampling; s++) {
         c += color_from_ray(ro,rd,world,0,5);

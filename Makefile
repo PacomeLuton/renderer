@@ -5,13 +5,13 @@ SRC=src/main.cpp
 EXEC=main
 
 all:
-	$(CXX) $(FLAGS) $(SRC) $(LINKFLAGS) -o $(EXEC)
+	time $(CXX) $(FLAGS) $(SRC) $(LINKFLAGS) -o $(EXEC)
 
 run: all
 	time ./main
 
 clean:
-	rm $(EXEC)
+	rm $(EXEC) -n 8
 
 # SPECIAL BUILT-IN RULES
 .PHONY: all clean

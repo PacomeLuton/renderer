@@ -2,7 +2,7 @@
 
 #include "damier.hpp"
 
-damier::damier() : couleur1(color(1)), couleur2(color(0.3)) {};
+damier::damier() : couleur1(color(1)), couleur2(color(0.01)) {};
 damier::damier(color c1, color c2) : couleur1(c1), couleur2(c2) {};
 
 vec3 damier::rayon(hit_record h) const {
@@ -17,7 +17,7 @@ color damier::reflexion(hit_record in, color c, vec3 out) const {
     double a2 = dot(d2,in.pos); a2 = a2 - floor(a2);
     if ((a1 < 0.5) ^ (a2 < 0.5)) res = couleur1;
     else res = couleur2;
-    return res;
+    return res*c*dot(in.normal,in.wi);
 }
 
 color damier::emittance(hit_record in) const {

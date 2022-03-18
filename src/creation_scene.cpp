@@ -30,24 +30,28 @@ static void donut_scene(scene &world){
     world.add(make_shared<sphere>(terre));
 }
 
-scene creation_scene(){
-    scene world;
-    //world.add(make_shared<sphere>(vec3(0),0.25));
-    //world.add(make_shared<deathstar>(vec3(0),0.25,0.14,0.3));
-    
-    //donut_scene(world);
-
-    square carre(vec3(0),vec3(0.08));
-    carre.set_material(make_shared<soleil>(0.5));
+void cube_on_damier(scene &world){
+    square carre(vec3(0,0.4,-1),vec3(0.3), mat3::rotationY(0.7));
+    carre.set_material(make_shared<lambertian>(color(0.5,0.2,0.1)));
     world.add(make_shared<square>(carre));
 
     plane sol;
     sol.set_material(make_shared<damier>());
     world.add(make_shared<plane>(sol));
 
-    plane ciel(vec3(0,1,0), vec3(0,10,0));
+    plane ciel(vec3(0,1,0), vec3(0,20,0));
     ciel.set_material(make_shared<soleil>(vec3(1)));
     world.add(make_shared<plane>(ciel));
+}
+
+scene creation_scene(){
+    scene world;
+    //world.add(make_shared<sphere>(vec3(0),0.25));
+    //world.add(make_shared<deathstar>(vec3(0),0.25,0.14,0.3));
+    
+    //donut_scene(world);
+    cube_on_damier(world);
+
 
     return world;
 }

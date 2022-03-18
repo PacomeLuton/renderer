@@ -12,7 +12,7 @@ vec3 lambertian::rayon(hit_record h) const {
 };
 
 color lambertian::reflexion(hit_record in, color c, vec3 out) const {
-    return this->couleur * c;
+    return this->couleur * c * dot(in.normal, in.wi);
 }
 
 color lambertian::emittance(hit_record in) const {

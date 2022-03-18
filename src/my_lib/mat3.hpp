@@ -22,6 +22,11 @@ class mat3 {
         mat3& operator*=(const double t);
         mat3& operator/=(const double t);
 
+        inline static mat3 identity();
+        inline static mat3 rotationX(double theta);
+        inline static mat3 rotationY(double theta);
+        inline static mat3 rotationZ(double theta);
+        static mat3 random(); //ATTENTION, c'est pas uniform, ça fait un peut n'importe quoi
 };
 
 
