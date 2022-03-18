@@ -34,6 +34,7 @@ color color_from_ray(vec3 ro, vec3 rd, scene &world, int depth, int max_depth){
 }
 
 color color_pixel(vec2 pixel_pos, vec2 resolution, scene world, int sampling){
+    pixel_pos = vec2(pixel_pos.x() + random_double(), pixel_pos.y() + random_double());
     vec2 p = (2*pixel_pos - resolution)/resolution.y();
     
     color c;

@@ -30,7 +30,7 @@ static void donut_scene(scene &world){
 void cube_on_damier(scene &world){
     square carre(vec3(0,0.4,-1),vec3(0.3), mat3::rotationY(0.7));
     carre.set_material(make_shared<lambertian>(color(0.5,0.2,0.1)));
-    world.add(make_shared<square>(carre));
+    //world.add(make_shared<square>(carre));
 
     plane sol;
     sol.set_material(make_shared<damier>());
