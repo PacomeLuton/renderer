@@ -3,17 +3,21 @@
 
 #include "miror.hpp"
 
-miror::miror() : c(color(1)) {reflexion = true; p = 0;};
-miror::miror(color col) : c(col) {reflexion = true; p = 0;};
+miror::miror() : couleur(color(1)) {};
+miror::miror(color col) : couleur(col) {};
 
-color miror::couleur(hit_record h) const {
-    return this->c;
+color miror::reflexion(hit_record in, color c, vec3 out) const {
+    return this->couleur*c;
 };
 
-vec3 miror::rayon(hit_record h) const {
-    double b = dot(h.i,h.n);
-    vec3 r = h.i-2*b*h.n;
-    return unit_vector(r);
+color miror::emittance(hit_record in) const {
+    return color(0);
+}
+
+vec3 miror::rayon(hit_record in) const {
+    double b = dot(in.wi,in.normal); 
+    vec3 r = in.wi - 2*b*in.normal;
+    return unit_vector(r); //on normalise le rayon qui sort
 };
 
 

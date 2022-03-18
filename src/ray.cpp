@@ -29,12 +29,12 @@ hit_record ray_casting(vec3 ro, vec3 rd, scene &world){
     for(int i = 0; i < 256 && t < tmax; i++){
         vec3 pos = ro + rd*t;
         hit_record h = map(pos, world);
-        if (abs(h.d) < 0.001){
+        if (abs(h.distance) < 0.001){
             res = h;
-            res.t = t;
+            res.time = t;
             break;
         }
-        t+=abs(h.d);
+        t+=abs(h.distance);
     }
     //if (t < tmax) res.t = t;
     return res;

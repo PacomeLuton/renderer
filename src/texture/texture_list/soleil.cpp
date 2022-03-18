@@ -3,15 +3,19 @@
 
 #include "soleil.hpp"
 
-soleil::soleil() : c(color(1)) {lumiere = true;};
-soleil::soleil(color col) : c(col) {lumiere = true;};
+soleil::soleil() : couleur_emis(color(1)) {};
+soleil::soleil(color emis) : couleur_emis(emis) {};
 
-color soleil::couleur(hit_record h) const{
-    return c;
-};
-vec3 soleil::rayon(hit_record h) const{
-    return vec3(0);
+color soleil::emittance(hit_record h) const {
+    return this->couleur_emis;
 };
 
+color soleil::reflexion(hit_record in, color c, vec3 out) const {
+    return color(0);
+}
+
+vec3 soleil::rayon(hit_record h) const {
+    return vec3(0); 
+}
 
 #endif

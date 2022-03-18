@@ -1,5 +1,4 @@
-#ifndef ALL_TEXTURE_H
-#define ALL_TEXTURE_H
+#pragma once
 
 #include "texture.hpp"
 
@@ -9,8 +8,5 @@ using std::make_shared;
 
 //https://raytracing.github.io/books/RayTracingInOneWeekend.html
 #include "./texture_list/lambertian.cpp"
-#include "./texture_list/uniform.cpp"
 #include "./texture_list/miror.cpp"
 #include "./texture_list/soleil.cpp"
-
-#endif

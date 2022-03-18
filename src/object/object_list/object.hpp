@@ -6,15 +6,12 @@
 
 class object {
     public:
-        color couleur = color(0.5);
         shared_ptr<material> mat;
     public:
         object();
         virtual double distance(vec3 pos) const = 0;
         hit_record hit(vec3 pos);
-        void set_color(color c);
         void set_material(shared_ptr<material> m);
-        color get_color();
 };
 
 #endif

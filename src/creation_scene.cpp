@@ -1,6 +1,9 @@
 #include "my_lib/my_lib.h"
 #include "object/all_objects.h"
 
+using std::shared_ptr;
+using std::make_shared;
+
 scene creation_scene(){
     scene world;
     //world.add(make_shared<sphere>(vec3(0),0.25));

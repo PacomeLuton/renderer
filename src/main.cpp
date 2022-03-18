@@ -2,17 +2,19 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include<omp.h>
 
 //lib include
 #include "./my_lib/my_lib.h"
 #include "./extern_lib/image.h"
 #include "color.cpp"
 #include "colorpixel.cpp"
+#include "creation_scene.cpp"
 
 using namespace std; //je suis un flemard, dsl
 
 #define TAILLE_ECRAN 500
-#define SAMPLE_PER_PIXEL 40
+#define SAMPLE_PER_PIXEL 2048
 
 int main(){
     //on veut un peu de random
@@ -27,21 +29,18 @@ int main(){
     vector<unsigned char> output(hauteur*largeur*nbChannels);
     string outputImage= "output.png";
 
+    //on creer la scene
+    scene world = creation_scene();
 
     //pour chaque pixel de l'image on veut calculer sa couleur
-    for(int i = 0; i < largeur; i++){
-        for(int j = 0; j < hauteur; j++){
+    #pragma omp parallel for
+    for(int j = 0; j < hauteur; j++){
+        for(int i = 0; i < largeur; i++){
             vec2 pos = vec2(i,j);
-            color pixel_color = color_pixel(pos,resolution);
-            for (int s = 0; s < SAMPLE_PER_PIXEL-1; ++s) {
-                auto u = i + random_double();
-                auto v = j + random_double();
-                vec2 pos = vec2(u,v);
-                pixel_color += color_pixel(pos,resolution);
-            }
-            color c = pixel_color/SAMPLE_PER_PIXEL;
+            color c = color_pixel(pos,resolution, world, SAMPLE_PER_PIXEL);
             write_color(c,(i+(hauteur-1-j)*largeur)*nbChannels,output);
         }
+        if (omp_get_thread_num() == 0) cerr << 100.*j/hauteur*omp_get_max_threads() << "% \r";
     }
 
     //Final export

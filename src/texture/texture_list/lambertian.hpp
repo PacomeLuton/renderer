@@ -1,16 +1,14 @@
-#ifndef TEXTURE_LAMBERTIAN_H
-#define TEXTURE_LAMBERTIAN_H
+#pragma once
 
 #include "../texture.hpp"
 
 class lambertian : public material {
     public:
-        color c;
+        color couleur;
     public:
         lambertian();
         lambertian(color col);
-        virtual color couleur(hit_record h) const override;
-        virtual vec3 rayon(hit_record h) const override;
+        virtual color reflexion(hit_record in, color c, vec3 out) const override;
+        virtual color emittance(hit_record in) const override;
+        virtual vec3 rayon(hit_record in) const override;
 };
-
-#endif

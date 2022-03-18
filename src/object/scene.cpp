@@ -16,10 +16,10 @@ double scene::distance(vec3 pos) const {
 }
 
 hit_record scene::hit(vec3 pos){
-    hit_record res; res.d = 1e8;
+    hit_record res; res.distance = 1e8;
     for(const auto& o : objects) {
         hit_record h = o->hit(pos);
-        if (abs(h.d) < abs(res.d)){
+        if (abs(h.distance) < abs(res.distance)){
             res = h;
         }
         //d = smin(d, o->distance(pos),0.05);

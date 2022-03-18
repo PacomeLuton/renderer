@@ -1,17 +1,15 @@
-#ifndef TEXTURE_SOLEIL_H
-#define TEXTURE_SOLEIL_H
+#pragma once
 
 #include "../texture.hpp"
 
 class soleil : public material {
     public:
-        color c;
+        color couleur_emis;
+        color couleur_ref;
     public:
         soleil();
-        soleil(color c);
-        virtual color couleur(hit_record h) const override;
+        soleil(color e);
+        virtual color emittance(hit_record in) const override;
+        virtual color reflexion(hit_record in, color c, vec3 out) const override;
         virtual vec3 rayon(hit_record h) const override;
 };
-
-
-#endif

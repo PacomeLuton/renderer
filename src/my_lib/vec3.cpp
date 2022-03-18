@@ -86,6 +86,10 @@ inline vec3 operator/(vec3 v, double t) {
     return (1/t) * v;
 }
 
+inline vec3 power(vec3 v, double t){
+    return vec3(pow(v.e[0],t), pow(v.e[1],t), pow(v.e[2],t));
+}
+
 inline double dot(const vec3 &u, const vec3 &v) {
     return u.e[0] * v.e[0]
          + u.e[1] * v.e[1]
