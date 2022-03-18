@@ -33,4 +33,9 @@ build/
 *.out
 *.app
 main
+
+#temporary result
 output*
+
+#vscode
+.vscode
