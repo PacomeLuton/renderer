@@ -1,11 +1,11 @@
 CXX=clang++ -std=c++17
 FLAGS=-O3 -Xpreprocessor -fopenmp 
-POSTFLAGS=-lomp
+LINKFLAGS=-lomp 
 SRC=src/main.cpp
 EXEC=main
 
 all:
-	$(CXX) $(FLAGS) $(SRC) $(POSTFLAGS) -o $(EXEC)
+	$(CXX) $(FLAGS) $(SRC) $(LINKFLAGS) -o $(EXEC)
 
 run: all
 	time ./main

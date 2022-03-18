@@ -2,7 +2,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include<omp.h>
+
+//for parralelisme
+#include <omp.h>
+
+//optionnal argument
+#include "./extern_lib/CLI11.hpp"
 
 //lib include
 #include "./my_lib/my_lib.h"
@@ -14,9 +19,15 @@
 using namespace std; //je suis un flemard, dsl
 
 #define TAILLE_ECRAN 500
-#define SAMPLE_PER_PIXEL 1
 
-int main(){
+int main(int argc, char **argv){
+
+    //on defini les options
+    CLI::App app{"Randering"};
+    unsigned int SAMPLE_PER_PIXEL = 1;
+    app.add_option("-n,--nbspp", SAMPLE_PER_PIXEL, "Number of samples");
+    CLI11_PARSE(app, argc, argv);
+
     //on veut un peu de random
     srand(time(NULL));
 
@@ -27,7 +38,7 @@ int main(){
     vec2 resolution = vec2(largeur,hauteur);
     int nbChannels=3;
     vector<unsigned char> output(hauteur*largeur*nbChannels);
-    string outputImage= "output.png";
+    string outputImage= "output_" + to_string(SAMPLE_PER_PIXEL) + ".png";
 
     //on creer la scene
     scene world = creation_scene();

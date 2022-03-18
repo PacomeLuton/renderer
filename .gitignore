@@ -33,4 +33,4 @@ build/
 *.out
 *.app
 main
-output.png
+output*
