@@ -2,6 +2,7 @@
 #include "object/all_objects.h"
 #include "ray.hpp"
 
+#include <random>
 
 color color_from_ray(vec3 ro, vec3 rd, scene &world, int depth, int max_depth);
 
