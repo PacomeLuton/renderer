@@ -32,7 +32,7 @@ int main(int argc, char **argv){
     srand(time(NULL));
 
     // creation de l'image image
-    double ratio = 9./16;
+    double ratio = 1; //9./16;
     int largeur = TAILLE_ECRAN;
     int hauteur = int(TAILLE_ECRAN*ratio);
     vec2 resolution = vec2(largeur,hauteur);
@@ -41,14 +41,19 @@ int main(int argc, char **argv){
     string outputImage= "output_" + to_string(SAMPLE_PER_PIXEL) + ".png";
 
     //on creer la scene
-    scene world = creation_scene();
+    
 
     //pour chaque pixel de l'image on veut calculer sa couleur
     #pragma omp parallel for
     for(int j = 0; j < hauteur; j++){
+        scene world = creation_scene();
         for(int i = 0; i < largeur; i++){
+            color c(0);
             vec2 pos = vec2(i,j);
-            color c = color_pixel(pos,resolution, world, SAMPLE_PER_PIXEL);
+            for (int s = 0; s < SAMPLE_PER_PIXEL; s++){
+                c += color_pixel(pos, resolution, world);
+            }
+            c /= SAMPLE_PER_PIXEL;
             write_color(c,(i+(hauteur-1-j)*largeur)*nbChannels,output);
         }
         if (omp_get_thread_num() == 0) cerr << 100.*j/hauteur*omp_get_max_threads() << "% \r";

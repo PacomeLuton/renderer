@@ -65,7 +65,7 @@ double length(vec3 v);
 bool close_null(vec3 v);
 
 vec3 random_in_unit_sphere();
-
+vec3 random_unit_vector();
 
 using color = vec3;    // RGB color
 

@@ -33,31 +33,17 @@ color color_from_ray(vec3 ro, vec3 rd, scene &world, int depth, int max_depth){
     return c;
 }
 
-color color_pixel(vec2 pixel_pos, vec2 resolution, scene world, int sampling){
-
-    
+color color_pixel(vec2 pixel_pos, vec2 resolution, scene world){
     color c;
 
-    for (int s = 0; s < sampling; s++) {
-        //GAUSSIAN JITTER
-        std::random_device rod{};
-        std::mt19937 gen{rod()};
-        std::normal_distribution<> d{0,0.3};
-        //pixel_pos = vec2(pixel_pos.x() + d(gen), pixel_pos.y() + d(gen));
+    vec2 p = (2*pixel_pos - resolution)/resolution.y();
 
-        //RANDOM JITTER
-        pixel_pos = vec2(pixel_pos.x() + random_double(-0.5,0.5), pixel_pos.y() + random_double(-0.5,0.5));
-    
-        vec2 p = (2*pixel_pos - resolution)/resolution.y();
+    vec3 ro = vec3(2*p,2); //position de la camera
+    vec3 rd = unit_vector(vec3(2*p,-8)); //direction dans laquelle on regarde 
+    //rd = mat3::rotationX(-0.44)*rd; // on baisse un peu la camera
 
-        vec3 ro = vec3(0,1,1); //position de la camera
-        vec3 rd = unit_vector(vec3(p,-1.5)); //direction dans laquelle on regarde 
-        rd = mat3::rotationX(-0.44)*rd; // on baisse un peu la camera
+    c = color_from_ray(ro,rd,world,0,5);
 
-        c += color_from_ray(ro,rd,world,0,5);
-    }
-
-    c /= sampling; 
 
     return c;
 }
