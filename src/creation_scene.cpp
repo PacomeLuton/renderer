@@ -66,7 +66,7 @@ void cornellBox(scene &world){
     world.add(make_shared<plane>(derriere));
     world.add(make_shared<plane>(devant));
 
-    square l(vec3(0,2.49,0),vec3(0.8,0.5,0.8)); l.set_material(light);
+    square l(vec3(0,2.49,0),vec3(0.5,0.5,0.5)); l.set_material(light);
     world.add(make_shared<square>(l));
 
     square c1(vec3(-0.8,-1,-0.2),vec3(0.57,1.4,0.57), mat3::rotationY(-0.25)); c1.set_material(white);
@@ -83,9 +83,9 @@ scene creation_scene(){
     //world.add(make_shared<deathstar>(vec3(0),0.25,0.14,0.3));
     
     //donut_scene(world);
-    cube_on_damier(world);
+    //cube_on_damier(world);
 
-    //cornellBox(world);
+    cornellBox(world);
 
     return world;
 }

@@ -39,13 +39,13 @@ color color_pixel(vec2 pixel_pos, vec2 resolution, scene world){
     vec2 p = (2*pixel_pos - resolution)/resolution.y();
 
     //Pour la scene avec le sucre 
-    vec3 ro = vec3(0,1,1); //position de la camera
-    vec3 rd = unit_vector(vec3(p,-1.5)); //direction dans laquelle on regarde 
-    rd = mat3::rotationX(-0.44)*rd; // on baisse un peu la camera
+    //vec3 ro = vec3(0,1,1); //position de la camera
+    //vec3 rd = unit_vector(vec3(p,-1.5)); //direction dans laquelle on regarde 
+    //rd = mat3::rotationX(-0.44)*rd; // on baisse un peu la camera
     
     //pour la cornell BOX
-    //vec3 ro = vec3(2*p,2); //position de la camera
-    //vec3 rd = unit_vector(vec3(2*p,-8)); 
+    vec3 ro = vec3(2*p,2); //position de la camera
+    vec3 rd = unit_vector(vec3(2*p,-8)); 
 
 
     c = color_from_ray(ro,rd,world,0,5);
