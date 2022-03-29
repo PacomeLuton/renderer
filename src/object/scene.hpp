@@ -1,14 +1,17 @@
-#ifndef SCENE_H
-#define SCENE_H
+#pragma once
 
 #include <vector>
 #include <memory>
-#include "./object_list/object.hpp"
+
+#include "forme/object.hpp"
 
 using std::shared_ptr;
 using std::make_shared;
 
-class scene : public object {
+class scene {
+    private:
+        std::vector<shared_ptr<object> > objects;
+
     public:
         scene();
         scene(shared_ptr<object> o);
@@ -16,11 +19,7 @@ class scene : public object {
         void clear();
         void add(shared_ptr<object> o);
 
-        virtual double distance(vec3 pos) const override;
+        double distance(vec3 pos);
         hit_record hit(vec3 pos);
 
-    public:
-        std::vector<shared_ptr<object> > objects;
 };
-
-#endif

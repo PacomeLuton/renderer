@@ -10,14 +10,22 @@ struct hit_record {
     vec3 pos; // position ou ça a touché
     vec3 normal; // normal de la surface (calculer si besoin)
     vec3 wi; // direction du rayon incident
+    
     double distance; // distance à la surface
     double time; // distance au depart du rayon
+    
     bool front_face; // interieur ou exterieur de la surface
+    
+    double u; // position de l'impact dans les coordonnés de l'objet
+    double v; // position de l'impact dans les coordonnés de l'obje
+    
     std::shared_ptr<material> mat; //materiel decrivant la surface
 
     hit_record(){
-        this->time = -1; //par convention, si le rayon touche rien on le mets à -1
-        this->mat = nullptr; //si on a pas encore touche de materiaux, ce pointeur est nul
+        time = -1; //par convention, si le rayon touche rien on le mets à -1
+        mat = nullptr; //si on a pas encore touche de materiaux, ce pointeur est nul
+        u = 0;
+        v = 0;
     }
 };
 

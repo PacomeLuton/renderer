@@ -1,5 +1,5 @@
 #include "my_lib/my_lib.h"
-#include "object/all_objects.h"
+#include "object/object.h"
 
 using std::shared_ptr;
 using std::make_shared;

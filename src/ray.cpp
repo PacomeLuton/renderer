@@ -1,8 +1,4 @@
-#ifndef RAY_C
-#define RAY_C
-
-#include "my_lib/my_lib.h"
-#include "object/all_objects.h"
+#include "ray.hpp"
 
 hit_record map(vec3 pos, scene &world){
     hit_record d = world.hit(pos);
@@ -39,5 +35,3 @@ hit_record ray_casting(vec3 ro, vec3 rd, scene &world){
     //if (t < tmax) res.t = t;
     return res;
 }
-
-#endif

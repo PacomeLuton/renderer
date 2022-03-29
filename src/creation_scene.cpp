@@ -1,6 +1,6 @@
 #include "creation_scene.hpp"
 
-
+/*
 static void donut_scene(scene &world){
     torus tor(vec3(0),0.4,0.1,vec3(-0.6,1,1.3));
     tor.set_material(make_shared<lambertian>(color(0.9,0.3,0.6)));
@@ -26,33 +26,38 @@ static void donut_scene(scene &world){
     terre.set_material(make_shared<lambertian>(color(0.2,1,0.4)));
     world.add(make_shared<sphere>(terre));
 }
-
+*/
 void cube_on_damier(scene &world){
+    lambertian psucre; psucre.set_texture(color(0.5,0.2,0.1)); auto sucre = make_shared<lambertian>(psucre);
+    lambertian pdam; pdam.set_texture(make_shared<damier>(0.9,0.03,2)); auto dam = make_shared<lambertian>(pdam);
+    soleil plight(color(1, 1, 1)); auto light = make_shared<soleil>(plight);
+
     square carre(vec3(0,0.4,-1),vec3(0.3), mat3::rotationY(0.7));
-    carre.set_material(make_shared<lambertian>(color(0.5,0.2,0.1)));
-    //world.add(make_shared<square>(carre));
+    carre.set_material(sucre);
+    world.add(make_shared<square>(carre));
 
     plane sol;
-    sol.set_material(make_shared<damier>());
+    sol.set_material(dam);
     world.add(make_shared<plane>(sol));
 
     plane ciel(vec3(0,1,0), vec3(0,20,0));
-    ciel.set_material(make_shared<soleil>(vec3(1)));
+    ciel.set_material(light);
     world.add(make_shared<plane>(ciel));
 }
 
+
 void cornellBox(scene &world){
-    auto red   = make_shared<lambertian>(color(.65, .05, .05));
-    auto white = make_shared<lambertian>(color(.73, .73, .73));
-    auto green = make_shared<lambertian>(color(.12, .45, .15));
-    auto light = make_shared<soleil>(color(1, 1, 1));
+    lambertian pred; pred.set_texture(color(.65, .05, .05)); auto red = make_shared<lambertian>(pred);
+    lambertian pwhite; pwhite.set_texture(color(.73, .73, .73)); auto white = make_shared<lambertian>(pwhite);
+    lambertian pgreen; pgreen.set_texture(color(.12, .45, .15)); auto green = make_shared<lambertian>(pgreen);
+    soleil plight(color(1, 1, 1)); auto light = make_shared<soleil>(plight);
 
     plane gauche(vec3(1,0,0), vec3(-2,0,0)); gauche.set_material(green);
     plane droite(vec3(-1,0,0), vec3(2,0,0)); droite.set_material(red);
     plane haut(vec3(0,-1,0), vec3(0,2,0)); haut.set_material(white);
     plane bas(vec3(0,1,0), vec3(0,-2,0)); bas.set_material(white);
     plane derriere(vec3(0,0,1), vec3(0,0,-2)); derriere.set_material(white);
-    plane devant(vec3(0,0,-1), vec3(0,0,2)); droite.set_material(red);
+    plane devant(vec3(0,0,-1), vec3(0,0,2)); devant.set_material(white);
 
     world.add(make_shared<plane>(gauche));
     world.add(make_shared<plane>(droite));
@@ -64,11 +69,12 @@ void cornellBox(scene &world){
     square l(vec3(0,2.49,0),vec3(0.8,0.5,0.8)); l.set_material(light);
     world.add(make_shared<square>(l));
 
-    square c1(vec3(-0.8,-1,-0.2),vec3(0.57,1.3,0.57), mat3::rotationY(-0.25)); c1.set_material(white);
+    square c1(vec3(-0.8,-1,-0.2),vec3(0.57,1.4,0.57), mat3::rotationY(-0.25)); c1.set_material(white);
     world.add(make_shared<square>(c1));
     
     square c2(vec3(0.5,-1.4,0.8),vec3(0.6,0.6,0.6), mat3::rotationY(0.3)); c2.set_material(white);
     world.add(make_shared<square>(c2));
+
 }
 
 scene creation_scene(){
@@ -77,9 +83,9 @@ scene creation_scene(){
     //world.add(make_shared<deathstar>(vec3(0),0.25,0.14,0.3));
     
     //donut_scene(world);
-    //cube_on_damier(world);
+    cube_on_damier(world);
 
-    cornellBox(world);
+    //cornellBox(world);
 
     return world;
 }

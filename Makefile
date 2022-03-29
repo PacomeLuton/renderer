@@ -29,6 +29,8 @@ clean:
 
 mrproper: clean
 	$(RM) bin/$(EXEC)
+	$(RM) -rf dep/*
+	$(RM) -rf obj/*
 
 dir:
 	@mkdir -p obj; mkdir -p bin; mkdir -p dep

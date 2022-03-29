@@ -2,7 +2,7 @@
 #define RAY_H
 
 #include "my_lib/my_lib.h"
-#include "object/all_objects.h"
+#include "object/object.h"
 
 hit_record map(vec3 pos, scene &world);
 

@@ -23,7 +23,7 @@ color color_from_ray(vec3 ro, vec3 rd, scene &world, int depth, int max_depth){
         //couleur reflechi :
         vec3 new_direc = t.mat->rayon(t); // direction d'ou vient le rayon
         color c_temp = color_from_ray(t.pos,new_direc, world, depth+1, max_depth); // couleur qui arrive
-        c += t.mat->reflexion(t,c_temp,new_direc); // on met a jour la couleur
+        c += t.mat->reflexion(t,c_temp); // on met a jour la couleur
     
     } else { // on est arrivé à l'infini
         color background_color = power(color(2,3,20)/255,1/0.45);
@@ -38,9 +38,15 @@ color color_pixel(vec2 pixel_pos, vec2 resolution, scene world){
 
     vec2 p = (2*pixel_pos - resolution)/resolution.y();
 
-    vec3 ro = vec3(2*p,2); //position de la camera
-    vec3 rd = unit_vector(vec3(2*p,-8)); //direction dans laquelle on regarde 
-    //rd = mat3::rotationX(-0.44)*rd; // on baisse un peu la camera
+    //Pour la scene avec le sucre 
+    vec3 ro = vec3(0,1,1); //position de la camera
+    vec3 rd = unit_vector(vec3(p,-1.5)); //direction dans laquelle on regarde 
+    rd = mat3::rotationX(-0.44)*rd; // on baisse un peu la camera
+    
+    //pour la cornell BOX
+    //vec3 ro = vec3(2*p,2); //position de la camera
+    //vec3 rd = unit_vector(vec3(2*p,-8)); 
+
 
     c = color_from_ray(ro,rd,world,0,5);
 
