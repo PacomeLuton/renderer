@@ -1,5 +1,6 @@
 #include "my_lib/my_lib.h"
 #include "object/object.h"
+#include "sampler/all_sampler.h"
 
 using std::shared_ptr;
 using std::make_shared;

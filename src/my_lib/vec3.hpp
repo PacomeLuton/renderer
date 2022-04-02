@@ -66,6 +66,7 @@ bool close_null(vec3 v);
 
 vec3 random_in_unit_sphere();
 vec3 random_unit_vector();
+vec3 random_hemi(vec3 n);
 
 using color = vec3;    // RGB color
 

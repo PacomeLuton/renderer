@@ -9,6 +9,6 @@ class soleil : public material {
         soleil();
         soleil(color e);
 
-        virtual color emittance(hit_record in) const override;
-        virtual vec3 rayon(hit_record h) const override;
+        virtual color emittance(hit_record &in) const override;
+        virtual color BRDF(hit_record &h) const override;
 };

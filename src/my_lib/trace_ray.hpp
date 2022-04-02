@@ -5,11 +5,13 @@
 #include <memory>
 
 class material;
+class sampler;
 
 struct hit_record {
     vec3 pos; // position ou ça a touché
     vec3 normal; // normal de la surface (calculer si besoin)
-    vec3 wi; // direction du rayon incident
+    vec3 wi; // direction du rayon incident (la ou est l'observateur)
+    vec3 wo; // direction du rayon sortant (la d'ou vient la lumiere)
     
     double distance; // distance à la surface
     double time; // distance au depart du rayon

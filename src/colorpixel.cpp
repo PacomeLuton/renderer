@@ -7,6 +7,7 @@ color color_from_ray(vec3 ro, vec3 rd, scene &world, int depth, int max_depth){
 
     auto t = ray_casting(ro,rd,world); // on tire le rayon
 
+
     if (t.time > 0){ // on a touché un objet
 
         t.pos = ro+rd*t.time; //position du point d'impact
@@ -20,10 +21,14 @@ color color_from_ray(vec3 ro, vec3 rd, scene &world, int depth, int max_depth){
         //couleur emise :
         c += t.mat->emittance(t);
 
+        //on recupere le sampler qu'on a utiliser pour cet objet
+
+        auto sampler = t.mat->sampl;
+
         //couleur reflechi :
-        vec3 new_direc = t.mat->rayon(t); // direction d'ou vient le rayon
-        color c_temp = color_from_ray(t.pos,new_direc, world, depth+1, max_depth); // couleur qui arrive
-        c += t.mat->reflexion(t,c_temp); // on met a jour la couleur
+        t.wo = sampler->rayon(t); // direction d'ou vient le rayon
+        color c_temp = color_from_ray(t.pos, t.wo, world, depth+1, max_depth); // couleur qui arrive
+        c += sampler->integrate(t, c_temp); // on mets à jour la couleur
     
     } else { // on est arrivé à l'infini
         color background_color = power(color(2,3,20)/255,1/0.45);

@@ -134,3 +134,11 @@ vec3 random_in_unit_sphere() {
 vec3 random_unit_vector() {
     return unit_vector(random_in_unit_sphere());
 }
+
+vec3 random_hemi(vec3 n){
+    while(true){
+        auto p = random_unit_vector();
+        if (dot(p,n) < 1e-6) continue;
+        return p;
+    }
+}
