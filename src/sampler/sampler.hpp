@@ -11,10 +11,8 @@ using std::make_shared;
 // emittance + INT(f(w0,wi)*L(wi)*(wi.n) , dwi)
 
 class sampler {
-    private:
-        virtual double pdf(hit_record &h) const = 0;
-
     public:
+        virtual double pdf(hit_record &h) const = 0;
         virtual vec3 rayon(hit_record &h) const = 0;
         virtual color integrate(hit_record &h, color in) const = 0;
 

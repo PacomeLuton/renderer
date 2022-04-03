@@ -47,11 +47,18 @@ void cube_on_damier(scene &world){
 
 
 void cornellBox(scene &world){
+    sampler_light s1; s1.add_light(vec3(0,2,0), vec3(0,-1,0), 0.8);
+    auto ss1 = make_shared<sampler_light>(s1);
+
+    sampler_uniform s2; auto ss2 = make_shared<sampler_uniform>(s2);
+
+    sampler_smart s; s.s1 = ss1; s.s2 = ss2; s.p = 0.2;
+    auto ss = make_shared<sampler_smart>(s);
     
-    lambertian pred; pred.set_texture(color(.65, .05, .05)); auto red = make_shared<lambertian>(pred); red->sampl = make_shared<sampler_uniform>();
-    lambertian pwhite; pwhite.set_texture(color(.73, .73, .73)); auto white = make_shared<lambertian>(pwhite); white->sampl = make_shared<sampler_uniform>();
-    lambertian pgreen; pgreen.set_texture(color(.12, .45, .15)); auto green = make_shared<lambertian>(pgreen); green->sampl = make_shared<sampler_uniform>();
-    soleil plight(color(1)); auto light = make_shared<soleil>(plight); light->sampl = make_shared<sampler_uniform>();
+    lambertian pred; pred.set_texture(color(.65, .05, .05)); auto red = make_shared<lambertian>(pred); red->sampl =ss2;
+    lambertian pwhite; pwhite.set_texture(color(.73, .73, .73)); auto white = make_shared<lambertian>(pwhite); white->sampl = ss2;
+    lambertian pgreen; pgreen.set_texture(color(.12, .45, .15)); auto green = make_shared<lambertian>(pgreen); green->sampl = ss2;
+    soleil plight(color(5)); auto light = make_shared<soleil>(plight); light->sampl = ss2;
 
     plane gauche(vec3(1,0,0), vec3(-2,0,0)); gauche.set_material(green);
     plane droite(vec3(-1,0,0), vec3(2,0,0)); droite.set_material(red);
@@ -67,7 +74,7 @@ void cornellBox(scene &world){
     world.add(make_shared<plane>(derriere));
     world.add(make_shared<plane>(devant));
 
-    square l(vec3(0,2.49,0),vec3(2,0.5,2)); l.set_material(light);
+    square l(vec3(0,2.49,0),vec3(0.5,0.5,0.5)); l.set_material(light);
     world.add(make_shared<square>(l));
 
     square c1(vec3(-0.8,-1,-0.2),vec3(0.57,1.4,0.57), mat3::rotationY(-0.25)); c1.set_material(white);

@@ -27,7 +27,7 @@ color color_from_ray(vec3 ro, vec3 rd, scene &world, int depth, int max_depth){
 
         //couleur reflechi :
         t.wo = sampler->rayon(t); // direction d'ou vient le rayon
-        color c_temp = color_from_ray(t.pos, t.wo, world, depth+1, max_depth); // couleur qui arrive
+        color c_temp = color_from_ray(t.pos, unit_vector(t.wo), world, depth+1, max_depth); // couleur qui arrive
         c += sampler->integrate(t, c_temp); // on mets à jour la couleur
     
     } else { // on est arrivé à l'infini

@@ -1,7 +1,8 @@
 #include "sampler_uniform.hpp"
 
+
 double sampler_uniform::pdf(hit_record &h) const {
-    return 1/pi;
+    return 1/(2*pi);
 }
 
 vec3 sampler_uniform::rayon(hit_record &h) const {
