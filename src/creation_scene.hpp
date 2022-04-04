@@ -9,4 +9,4 @@ static void donut_scene(scene &world);
 
 static void cube_on_damier(scene &world);
 
-scene creation_scene();
+scene creation_scene(std::string sampl);

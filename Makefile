@@ -13,6 +13,9 @@ all : bin/$(EXEC)
 run : all
 	./bin/main -n 8 -t 1000
 
+help : all
+	./bin/main -h
+
 bin/$(EXEC) : $(OFILES)
 	$(CXX) -v -o $@ $^ $(LINKFLAGS)
 

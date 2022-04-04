@@ -26,6 +26,8 @@ int main(int argc, char **argv){
     app.add_option("-n,--nbspp", SAMPLE_PER_PIXEL, "Number of samples");
     unsigned int TAILLE_ECRAN  = 512;
     app.add_option("-t,--taille", TAILLE_ECRAN, "Size of the screen");
+    string sampl = "uniform";
+    app.add_option("-s,--sampler", sampl, "Which sampler to use (uniform / light / mixte)");
     CLI11_PARSE(app, argc, argv);
 
     //on veut un peu de random
@@ -46,7 +48,7 @@ int main(int argc, char **argv){
     //pour chaque pixel de l'image on veut calculer sa couleur
     #pragma omp parallel for
     for(int j = 0; j < hauteur; j++){
-        scene world = creation_scene(); //c'est contre intuitif mais pour des raisons de lectures concurente en mémoire, c'est plus rapide de recalculer la scene pour chaque processeur
+        scene world = creation_scene(sampl); //c'est contre intuitif mais pour des raisons de lectures concurente en mémoire, c'est plus rapide de recalculer la scene pour chaque processeur
         for(int i = 0; i < largeur; i++){
             color c(0);
             vec2 pos = vec2(i,j);

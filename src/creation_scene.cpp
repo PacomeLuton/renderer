@@ -46,7 +46,7 @@ void cube_on_damier(scene &world){
 }
 
 
-void cornellBox(scene &world){
+void cornellBox(scene &world, std::string sampl){
     sampler_light s1; s1.add_light(vec3(0,2,0), vec3(0,-1,0), 0.8);
     auto ss1 = make_shared<sampler_light>(s1);
 
@@ -54,11 +54,16 @@ void cornellBox(scene &world){
 
     sampler_smart s; s.s1 = ss1; s.s2 = ss2; s.p = 0.2;
     auto ss = make_shared<sampler_smart>(s);
+
+    shared_ptr<sampler> sss;
+    if (sampl == "mixte") sss = ss;
+    else if (sampl == "light") sss = ss1;
+    else sss = ss2;
     
-    lambertian pred; pred.set_texture(color(.65, .05, .05)); auto red = make_shared<lambertian>(pred); red->sampl =ss2;
-    lambertian pwhite; pwhite.set_texture(color(.73, .73, .73)); auto white = make_shared<lambertian>(pwhite); white->sampl = ss2;
-    lambertian pgreen; pgreen.set_texture(color(.12, .45, .15)); auto green = make_shared<lambertian>(pgreen); green->sampl = ss2;
-    soleil plight(color(5)); auto light = make_shared<soleil>(plight); light->sampl = ss2;
+    lambertian pred; pred.set_texture(color(.65, .05, .05)); auto red = make_shared<lambertian>(pred); red->sampl =sss;
+    lambertian pwhite; pwhite.set_texture(color(.73, .73, .73)); auto white = make_shared<lambertian>(pwhite); white->sampl = sss;
+    lambertian pgreen; pgreen.set_texture(color(.12, .45, .15)); auto green = make_shared<lambertian>(pgreen); green->sampl = sss;
+    soleil plight(color(5)); auto light = make_shared<soleil>(plight); light->sampl = sss;
 
     plane gauche(vec3(1,0,0), vec3(-2,0,0)); gauche.set_material(green);
     plane droite(vec3(-1,0,0), vec3(2,0,0)); droite.set_material(red);
@@ -84,14 +89,14 @@ void cornellBox(scene &world){
     world.add(make_shared<square>(c2));
 }
 
-scene creation_scene(){
+scene creation_scene(std::string sampl){
     scene world;
     //world.add(make_shared<sphere>(vec3(0),0.25));
     //world.add(make_shared<deathstar>(vec3(0),0.25,0.14,0.3));
     
     //donut_scene(world);
     //cube_on_damier(world);
-    cornellBox(world);
+    cornellBox(world, sampl);
 
     return world;
 }
